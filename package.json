@@ -7,15 +7,29 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"default": "./dist/index.js"
+		},
+		"./headers": {
+			"types": "./dist/headers/index.d.ts",
+			"default": "./dist/headers/index.js"
+		},
+		"./http/*": {
+			"types": "./dist/http/*.d.ts",
+			"default": "./dist/http/*.js"
+		},
+		"./headers/*": {
+			"types": "./dist/headers/*.d.ts",
+			"default": "./dist/headers/*.js"
 		}
 	},
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	],
+	"sideEffects": false,
 	"scripts": {
 		"build": "tsdown",
-		"prepublishOnly": "bun run build",
+		"build:prod": "NODE_ENV=production tsdown",
+		"prepublishOnly": "bun run build:prod",
 		"check": "biome check --write .",
 		"format": "biome format --write",
 		"prepare": "husky",
