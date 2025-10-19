@@ -45,7 +45,8 @@ return error("Bad Request", 400);
 All helpers accept `ResponseInit` and support typed header names. The built-in union only includes common headers to keep types light; you can still pass any custom header name.
 
 ```ts
-import { json, type ResponseHeader } from "respond-kit";
+import { json } from "respond-kit";
+import { type ResponseHeader } from "respond-kit/headers";
 
 const res = json(
   { ok: true },
@@ -62,16 +63,14 @@ const res = json(
 
 ---
 
-### MIME utilities
+### Headers helper
 
 ```ts
-import { mimes } from "respond-kit";
+import { headers } from "respond-kit/headers";
 
-// Useful when creating a Response manually
-const file = await Bun.file("./logo.png").arrayBuffer();
-return new Response(file, {
-  headers: { "Content-Type": mimes.png },
-});
+const merged = headers.merge({ "Cache-Control": "public" }, [
+  ["Vary", "Accept-Encoding"],
+]);
 ```
 
 ---
@@ -92,9 +91,22 @@ return new Response(file, {
 
 Types and utilities exported for DX:
 
-- `ContentfulStatusCode`
-- `ResponseHeader`, `HeaderRecord`
-- `mimes`, `BaseMime`
+- From `respond-kit`: `ContentfulStatusCode`
+- From `respond-kit/headers`: `ResponseHeader`, `HeaderRecord`, `HeaderInitLike`, `BaseMime`
+
+---
+
+### Subpath imports and tree‑shaking
+
+Import only what you need using subpath imports. The package is marked `sideEffects: false` to enable aggressive tree‑shaking.
+
+```ts
+import { json } from "respond-kit/http/json";
+import { respond } from "respond-kit/http/respond";
+import { headers } from "respond-kit/headers";
+```
+
+This loads the minimal modules instead of the full entry.
 
 ---
 
