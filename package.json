@@ -1,0 +1,47 @@
+{
+	"name": "respond-kit",
+	"version": "1.0.0",
+	"description": "Tiny, type-safe HTTP response helpers for modern runtimes (Bun, Cloudflare, Deno, Node).",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"prepublishOnly": "bun run build",
+		"check": "biome check --write .",
+		"format": "biome format --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.6",
+		"@types/bun": "latest",
+		"lint-staged": "^16.2.4",
+		"tsdown": "^0.15.8"
+	},
+	"peerDependencies": {
+		"typescript": "^5.9.3"
+	},
+	"lint-staged": {
+		"**/*.{js,mjs,cjs,ts,mts,cts}": "biome check --write"
+	},
+	"keywords": [
+		"http",
+		"response",
+		"json",
+		"text",
+		"error",
+		"bun",
+		"hono",
+		"cloudflare",
+		"utility"
+	],
+	"author": "Your Name <your@email.com>",
+	"license": "MIT"
+}
