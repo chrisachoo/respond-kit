@@ -19,23 +19,23 @@ pnpm add respond-kit
 ### Quick start
 
 ```ts
-import { json, text, error, respond } from "respond-kit"
+import { json, text, error, respond } from "respond-kit";
 
 // JSON
 export function GET() {
-	return json({ ok: true })
+  return json({ ok: true });
 }
 
 // Shorthand helpers
-return respond.ok({ user })
-return respond.created({ id })
-return respond.noContent()
+return respond.ok({ user });
+return respond.created({ id });
+return respond.noContent();
 
 // Plain text
-return respond.text("pong")
+return respond.text("pong");
 
 // Error
-return error("Bad Request", 400)
+return error("Bad Request", 400);
 ```
 
 ---
@@ -45,16 +45,19 @@ return error("Bad Request", 400)
 All helpers accept `ResponseInit` and support typed header names. The built-in union only includes common headers to keep types light; you can still pass any custom header name.
 
 ```ts
-import { json, type ResponseHeader } from "respond-kit"
+import { json, type ResponseHeader } from "respond-kit";
 
-const res = json({ ok: true }, {
-	status: 201,
-	headers: {
-		// typed names with autocomplete
-		"Cache-Control": "public, max-age=60",
-		"Vary": "Accept-Encoding",
-	} satisfies Record<ResponseHeader, string>,
-})
+const res = json(
+  { ok: true },
+  {
+    status: 201,
+    headers: {
+      // typed names with autocomplete
+      "Cache-Control": "public, max-age=60",
+      Vary: "Accept-Encoding",
+    } satisfies Record<ResponseHeader, string>,
+  }
+);
 ```
 
 ---
@@ -62,13 +65,13 @@ const res = json({ ok: true }, {
 ### MIME utilities
 
 ```ts
-import { mimes } from "respond-kit"
+import { mimes } from "respond-kit";
 
 // Useful when creating a Response manually
-const file = await Bun.file("./logo.png").arrayBuffer()
+const file = await Bun.file("./logo.png").arrayBuffer();
 return new Response(file, {
-	headers: { "Content-Type": mimes.png },
-})
+  headers: { "Content-Type": mimes.png },
+});
 ```
 
 ---
@@ -156,3 +159,12 @@ git push --follow-tags
 ### License
 
 MIT
+
+---
+
+### Maintainers
+
+This project is maintained by:
+
+- [chrisachoo](https://github.com/chrisachoo) (GitHub)
+

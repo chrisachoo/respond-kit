@@ -45,6 +45,21 @@
 		"cloudflare",
 		"utility"
 	],
-	"author": "Your Name <your@email.com>",
+	"author": {
+		"name": "chrisachoo",
+		"url": "https://github.com/chrisachoo"
+	},
+	"contributors": [
+		{
+			"name": "chrisachoo",
+			"url": "https://github.com/chrisachoo"
+		}
+	],
+	"maintainers": [
+		{
+			"name": "chrisachoo",
+			"url": "https://github.com/chrisachoo"
+		}
+	],
 	"license": "MIT"
 }
