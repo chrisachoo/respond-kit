@@ -8,6 +8,10 @@ Tiny, type-safe HTTP response helpers for modern runtimes (Bun, Cloudflare Worke
 
 ```bash
 bun add respond-kit
+# or
+npm i respond-kit
+# or
+pnpm add respond-kit
 ```
 
 ---
