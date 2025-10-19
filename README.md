@@ -38,7 +38,7 @@ return error("Bad Request", 400)
 
 ### Headers with autocomplete
 
-All helpers accept `ResponseInit` and support typed header names. You can pass any `HeadersInit`, and you’ll get autocompletion for standard response headers.
+All helpers accept `ResponseInit` and support typed header names. The built-in union only includes common headers to keep types light; you can still pass any custom header name.
 
 ```ts
 import { json, type ResponseHeader } from "respond-kit"
@@ -79,12 +79,7 @@ return new Response(file, {
   - `created<T>(data: T)` → 201
   - `noContent()` → 204
   - `badRequest<T>(data: T)` → 400
-  - `unauthorized<T>(data: T)` → 401
-  - `forbidden<T>(data: T)` → 403
   - `notFound<T>(data: T)` → 404
-  - `conflict<T>(data: T)` → 409
-  - `internalError<T>(data: T)` → 500
-  - `notImplemented<T>(data: T)` → 501
   - `text(data: string, init?: ResponseInit | status)`
   - `error(err: string | Error, init?: ResponseInit | status)`
 
